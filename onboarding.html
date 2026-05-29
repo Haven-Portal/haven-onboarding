@@ -32,7 +32,6 @@
       line-height: 1.65;
     }
 
-    /* ── Top nav ── */
     .top-nav {
       background: var(--nav-bg);
       padding: 12px 24px;
@@ -61,7 +60,6 @@
       text-transform: uppercase;
     }
 
-    /* ── Hero ── */
     .hero {
       background: var(--nav-bg);
       padding: 48px 40px 40px;
@@ -88,10 +86,8 @@
       font-size: 15px;
     }
 
-    /* ── Main layout ── */
     main { max-width: 860px; margin: 0 auto; padding: 48px 24px 80px; }
 
-    /* ── Section header ── */
     .section-header {
       background: var(--section-header-bg);
       color: var(--section-header-text);
@@ -121,7 +117,6 @@
       letter-spacing: .01em;
     }
 
-    /* ── Cards ── */
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -182,7 +177,6 @@
     }
     .card-body.open { display: block; }
 
-    /* ── Content inside cards ── */
     .card-body h3 {
       font-family: 'DM Serif Display', serif;
       font-size: 1rem;
@@ -209,7 +203,6 @@
     }
     .card-body li strong { color: var(--accent-dark); }
 
-    /* ── Script / verbatim blocks ── */
     .script-block {
       background: var(--accent-light);
       border-left: 3px solid var(--accent);
@@ -221,7 +214,6 @@
       color: #3a2e25;
     }
 
-    /* ── Key/value tables ── */
     .kv-table {
       width: 100%;
       border-collapse: collapse;
@@ -246,7 +238,6 @@
     .kv-table tr:last-child td { border-bottom: none; }
     .kv-table tr:nth-child(even) td { background: var(--accent-light); }
 
-    /* ── Tags/pills ── */
     .tag {
       display: inline-block;
       background: var(--accent-light);
@@ -261,7 +252,6 @@
       margin: 2px 2px 2px 0;
     }
 
-    /* ── Callout box ── */
     .callout {
       background: var(--accent-light);
       border: 1px solid var(--accent);
@@ -272,7 +262,6 @@
     }
     .callout strong { color: var(--accent-dark); }
 
-    /* ── Contact grid ── */
     .contact-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -288,7 +277,6 @@
     .contact-card .name { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
     .contact-card .responsibilities { font-size: 13px; color: var(--muted); }
 
-    /* ── Pricing table ── */
     .price-row { display: flex; justify-content: space-between; align-items: baseline; padding: 8px 0; border-bottom: 1px solid var(--border); }
     .price-row:last-child { border-bottom: none; }
     .price-row .item { font-size: 14px; }
@@ -297,7 +285,6 @@
     .price-row .target { color: var(--accent-dark); font-weight: 600; }
     .price-row .floor { color: #888; }
 
-    /* ── Inline link style ── */
     a.doc-link {
       color: var(--accent-dark);
       font-weight: 500;
@@ -306,14 +293,6 @@
       padding-bottom: 1px;
     }
     a.doc-link:hover { color: var(--accent); }
-
-    /* ── Holiday table note ── */
-    .holiday-note {
-      font-size: 13px;
-      color: var(--muted);
-      margin-top: 10px;
-      font-style: italic;
-    }
   </style>
 </head>
 <body>
@@ -343,12 +322,12 @@
 <header class="hero">
   <div class="hero-label">New Hire Resource</div>
   <h1>Outbound SDR Onboarding</h1>
-  <p>Your complete reference for role expectations, the sales cycle, outbound process, scripts, rebuttals, pricing, and team contacts. Everything clicks after about two weeks — use this guide until it does.</p>
+  <p>Your complete reference for role expectations, the sales cycle, outbound process, scripts, rebuttals, pricing, and team contacts.</p>
 </header>
 
 <main>
 
-  <!-- ══════════════════════════════════ ROLE OVERVIEW ══════════════════════════════════ -->
+  <!-- ROLE OVERVIEW -->
   <div id="role-overview" class="section-header">
     <div class="section-icon">①</div>
     <h2>Role Overview &amp; Team Structure</h2>
@@ -363,33 +342,29 @@
       <span class="card-toggle">View details</span>
     </div>
     <div class="card-body">
-      <p>Welcome to the Outbound SDR team! This role is fast-paced, highly organized, and very niche compared to traditional sales roles. Most new hires report that everything clicks after about <strong>two weeks</strong> of hands-on experience.</p>
+      <p>Welcome to the Outbound SDR team! This role is fast-paced and dynamic full cycle sales role. You'll spend the first two weeks meeting with team members and learning about the company and the role.</p>
 
       <h3>Team Structure</h3>
       <ul>
         <li>You are part of the Outbound SDR team (7 reps).</li>
-        <li>You will be paired with an <strong>Inbound SDR</strong> ("your inbounder") — each inbounder supports two outbound reps.</li>
-        <li>Your inbounder is <strong>Cacey</strong> (Senior SDR, former Yelp).</li>
-        <li>You'll also work closely with <strong>Caden</strong> (Senior SDR) and <strong>Aaron</strong> (Customer Success, still closely involved).</li>
+        <li>You will be paired with an <strong>Inbound SDR</strong> — each Inbounder supports two outbound reps.</li>
       </ul>
 
       <h3>Work Hours</h3>
       <ul>
-        <li>Training initially follows EST-aligned hours.</li>
-        <li>After training, hours can be adjusted — consistency matters more than exact timing.</li>
-        <li>Once hours are set, week-to-week consistency is expected.</li>
+        <li>9–5:30 EST with 30 minutes for lunch.</li>
       </ul>
 
       <h3>What We Sell</h3>
       <ul>
-        <li>Advertising placements in Haven real estate magazines.</li>
+        <li>Advertising placements in Haven Lifestyles Real Estate magazines.</li>
         <li>Each market produces <strong>8 issues per year</strong>.</li>
-        <li>Each issue runs on a <strong>6-week cycle</strong>, called one "edition."</li>
-        <li>At all times you are working <strong>two editions simultaneously</strong>: opening a new one and closing a previous one.</li>
+        <li>Each issue runs on a <strong>6-week cycle</strong>.</li>
+        <li>At times issues can overlap where you are working two of the same market simultaneously: opening a new one and closing a previous one.</li>
       </ul>
 
       <h3>Markets &amp; Edition Naming</h3>
-      <p>You will manage <strong>six markets</strong>. Every Monday, one market starts a new edition. Editions are named by their start date (Monday):</p>
+      <p>You will manage <strong>six slates</strong>. Every Monday, a new slate starts. Editions are named by their start date (Monday):</p>
       <div class="callout">
         <strong>Examples:</strong> TB-011926 → Tampa edition starting Jan 19 &nbsp;|&nbsp; NC-122225 → North Carolina edition starting Dec 22<br>
         ❌ NOT the print date &nbsp; ❌ NOT the mail date &nbsp; ✅ The start of the sales cycle
@@ -397,7 +372,7 @@
     </div>
   </div>
 
-  <!-- ══════════════════════════════════ SALES CYCLE ══════════════════════════════════ -->
+  <!-- SALES CYCLE -->
   <div id="sales-cycle" class="section-header" style="margin-top:52px">
     <div class="section-icon">②</div>
     <h2>Sales Cycle &amp; Weekly Workflow</h2>
@@ -419,15 +394,14 @@
         <li>Expect high inbound volume on Mondays.</li>
       </ol>
 
-      <h3>Weekly Send Cadence (across a 6-week slate)</h3>
+      <h3>Send Cadence (across 6 weeks)</h3>
       <table class="kv-table">
         <thead><tr><th>Week</th><th>What Happens</th></tr></thead>
         <tbody>
           <tr><td><strong>Week 1</strong></td><td>Mon: First email to active listings. Wed: RE follow-up (usually includes a better offer). Agents who respond are removed from future sends.</td></tr>
           <tr><td><strong>Week 2</strong></td><td>Quiet week for this slate — no sends.</td></tr>
-          <tr><td><strong>Week 3</strong></td><td>Tue: First email to new listings (came on market after Week 1). Thu: RE to new listings. Also: Contracts & Subscriptions (ASU) sent to agents already under contract.</td></tr>
-          <tr><td><strong>Week 4</strong></td><td>Third RE — very short, deadline-driven ("checking in before we close the issue").</td></tr>
-          <tr><td><strong>After print</strong></td><td>Past Issue Advertisers (PI) email sent once magazines are physically delivered. Focus: "Did you receive your copies?" + renewal.</td></tr>
+          <tr><td><strong>Week 3</strong></td><td>Tue: First email to new listings (came on market after Week 1). Thu: RE to new listings. Also: Contracts &amp; Subscriptions (ASU), 1/6 pages, and CWO (cover wrap offer) sent.</td></tr>
+          <tr><td><strong>Week 4</strong></td><td>Third RE — very short, deadline-driven ("checking in before we close the issue"). Also: Past Issue Advertisers (PALI) email sent once magazines are physically delivered. Focus: "Did you receive your copies?" + renewal.</td></tr>
         </tbody>
       </table>
 
@@ -438,17 +412,18 @@
           <tr><td><strong>Interested</strong></td><td>Agent engaged, asked a question, but hasn't committed. <em>You are the closer here.</em> Call + text within 5 days. Move to a Salesforce deal.</td></tr>
           <tr><td><strong>In (Deal Created)</strong></td><td>Agent agreed to advertise. Collect materials, track design → approval → print.</td></tr>
           <tr><td><strong>Not Interested</strong></td><td>Declined. No further outreach unless something meaningful changes.</td></tr>
-          <tr><td><strong>Follow Up</strong></td><td>Not yet decided. Revisit at the agreed-upon time.</td></tr>
+          <tr><td><strong>FUBP (Follow Up Before Print)</strong></td><td>Not yet decided. Revisit closer to final deadline in week 4.</td></tr>
+          <tr><td><strong>NLI (No Longer Interested)</strong></td><td>Agent was initially interested but ultimately declined. Make an attempt to rebuttal to close for current issue, or use as a source for future outbound opportunities.</td></tr>
         </tbody>
       </table>
 
       <div class="callout">
-        <strong>Key Philosophy:</strong> Not all leads go into Salesforce immediately. Until a lead is ready for a call or explicitly interested, it lives in Gmail — not the CRM. Go straight to the <strong>Interested folder</strong> first; that's where active selling happens.
+        <strong>Key Philosophy:</strong> Not all leads go into Salesforce immediately. Until a lead converts to a deal, it lives in Gmail — not the CRM. Go straight to the <strong>Interested folder</strong> first; that's where active selling happens.
       </div>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════ OUTBOUND ══════════════════════════════════ -->
+  <!-- OUTBOUND -->
   <div id="outbound" class="section-header" style="margin-top:52px">
     <div class="section-icon">③</div>
     <h2>Outbound Process &amp; Expectations</h2>
@@ -568,7 +543,7 @@
     </div>
   </div>
 
-  <!-- ══════════════════════════════════ CALL TRAINING ══════════════════════════════════ -->
+  <!-- CALL TRAINING -->
   <div id="call-training" class="section-header" style="margin-top:52px">
     <div class="section-icon">④</div>
     <h2>Call Training &amp; Scripts</h2>
@@ -658,7 +633,7 @@
     </div>
   </div>
 
-  <!-- ══════════════════════════════════ REBUTTALS ══════════════════════════════════ -->
+  <!-- REBUTTALS -->
   <div id="rebuttals" class="section-header" style="margin-top:52px">
     <div class="section-icon">⑤</div>
     <h2>Rebuttals &amp; Common Objections</h2>
@@ -741,7 +716,7 @@
     </div>
   </div>
 
-  <!-- ══════════════════════════════════ PRICING ══════════════════════════════════ -->
+  <!-- PRICING -->
   <div id="pricing" class="section-header" style="margin-top:52px">
     <div class="section-icon">⑥</div>
     <h2>Pricing Guide</h2>
@@ -805,7 +780,7 @@
     </div>
   </div>
 
-  <!-- ══════════════════════════════════ EMAIL TEMPLATES ══════════════════════════════════ -->
+  <!-- EMAIL TEMPLATES -->
   <div id="email-templates" class="section-header" style="margin-top:52px">
     <div class="section-icon">⑦</div>
     <h2>Email Templates</h2>
@@ -870,7 +845,7 @@ Recent Issue: $%link%<br><br>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════ TEAM CONTACTS ══════════════════════════════════ -->
+  <!-- TEAM CONTACTS -->
   <div id="team-contacts" class="section-header" style="margin-top:52px">
     <div class="section-icon">⑧</div>
     <h2>Team Contact Guide</h2>
@@ -908,7 +883,7 @@ Recent Issue: $%link%<br><br>
         </div>
         <div class="contact-card">
           <div class="name">@Devin Snelling</div>
-          <div class="responsibilities">Salesforce + Groove + Monday.com requests · Training & IT/tech stack support</div>
+          <div class="responsibilities">Salesforce + Groove + Monday.com requests · Training &amp; IT/tech stack support</div>
         </div>
         <div class="contact-card">
           <div class="name">@Jillian Zimmer</div>
@@ -930,7 +905,7 @@ Recent Issue: $%link%<br><br>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════ HOLIDAYS ══════════════════════════════════ -->
+  <!-- HOLIDAYS -->
   <div id="holidays" class="section-header" style="margin-top:52px">
     <div class="section-icon">⑨</div>
     <h2>Holiday Calendar</h2>
@@ -945,7 +920,6 @@ Recent Issue: $%link%<br><br>
       <span class="card-toggle">View calendar</span>
     </div>
     <div class="card-body">
-      <h3>2026</h3>
       <table class="kv-table">
         <thead><tr><th>Date</th><th>Holiday</th><th>Day</th></tr></thead>
         <tbody>
@@ -962,8 +936,6 @@ Recent Issue: $%link%<br><br>
           <tr><td>12/25/2026</td><td>Christmas Day</td><td>Friday</td></tr>
         </tbody>
       </table>
-
-  
     </div>
   </div>
 
@@ -977,8 +949,6 @@ Recent Issue: $%link%<br><br>
     btn.textContent = isOpen ? 'Hide' : (btn.dataset.label || 'View details');
     if (!btn.dataset.label) btn.dataset.label = btn.textContent === 'Hide' ? 'View details' : btn.textContent;
   }
-
-  // Store original button labels
   document.querySelectorAll('.card-toggle').forEach(btn => {
     btn.dataset.label = btn.textContent;
   });
