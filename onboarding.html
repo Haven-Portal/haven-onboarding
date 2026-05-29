@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Haven Onboarding</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+    :root {
+      --bg: #faf9f7;
+      --surface: #ffffff;
+      --border: #e8e3dc;
+      --text: #1a1714;
+      --muted: #6b6560;
+      --accent: #c4945a;
+      --accent-light: #f5ede0;
+      --accent-dark: #9e7240;
+      --nav-bg: #1a1714;
+      --nav-text: #e8e3dc;
+      --section-header-bg: #1a1714;
+      --section-header-text: #faf9f7;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    /* ── Top nav ── */
+    .top-nav {
+      background: var(--nav-bg);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      font-size: 13px;
+    }
+    .top-nav a {
+      color: var(--nav-text);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity .15s;
+    }
+    .top-nav a:hover { opacity: 1; }
+    .top-nav .sep { color: var(--accent); opacity: 1; }
+    .top-nav .badge {
+      background: var(--accent);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 20px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--nav-bg);
+      padding: 48px 40px 40px;
+      border-bottom: 3px solid var(--accent);
+    }
+    .hero-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: #faf9f7;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+    .hero p {
+      color: #b0a89e;
+      max-width: 620px;
+      font-size: 15px;
+    }
+
+    /* ── Main layout ── */
+    main { max-width: 860px; margin: 0 auto; padding: 48px 24px 80px; }
+
+    /* ── Section header ── */
+    .section-header {
+      background: var(--section-header-bg);
+      color: var(--section-header-text);
+      padding: 14px 22px;
+      border-radius: 6px 6px 0 0;
+      margin-top: 52px;
+      margin-bottom: 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-header .section-icon {
+      width: 28px;
+      height: 28px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+    .section-header h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      letter-spacing: .01em;
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 6px 6px;
+      margin-bottom: 2px;
+      overflow: hidden;
+    }
+    .card + .card {
+      border-top: 1px solid var(--border);
+      border-radius: 0;
+    }
+    .card:last-child { border-radius: 0 0 6px 6px; }
+
+    .card-header {
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      cursor: pointer;
+      gap: 16px;
+      transition: background .15s;
+    }
+    .card-header:hover { background: var(--accent-light); }
+
+    .card-title-group { flex: 1; }
+    .card-title {
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+    .card-subtitle {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .card-toggle {
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 600;
+      white-space: nowrap;
+      background: var(--accent-light);
+      border: 1px solid var(--accent);
+      border-radius: 20px;
+      padding: 4px 12px;
+      cursor: pointer;
+      transition: background .15s, color .15s;
+      flex-shrink: 0;
+    }
+    .card-toggle:hover { background: var(--accent); color: #fff; }
+
+    .card-body {
+      display: none;
+      padding: 0 22px 22px;
+      border-top: 1px solid var(--border);
+      margin-top: 0;
+    }
+    .card-body.open { display: block; }
+
+    /* ── Content inside cards ── */
+    .card-body h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--accent-dark);
+      margin: 20px 0 8px;
+    }
+    .card-body h3:first-child { margin-top: 18px; }
+
+    .card-body p {
+      color: var(--text);
+      margin-bottom: 10px;
+      font-size: 14.5px;
+    }
+
+    .card-body ol, .card-body ul {
+      padding-left: 20px;
+      margin-bottom: 12px;
+    }
+    .card-body li {
+      margin-bottom: 6px;
+      font-size: 14.5px;
+      color: var(--text);
+    }
+    .card-body li strong { color: var(--accent-dark); }
+
+    /* ── Script / verbatim blocks ── */
+    .script-block {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      padding: 12px 16px;
+      border-radius: 0 4px 4px 0;
+      margin: 10px 0 14px;
+      font-size: 14px;
+      font-style: italic;
+      color: #3a2e25;
+    }
+
+    /* ── Key/value tables ── */
+    .kv-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 14px;
+    }
+    .kv-table th {
+      background: var(--section-header-bg);
+      color: var(--section-header-text);
+      padding: 8px 14px;
+      text-align: left;
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .kv-table td {
+      padding: 8px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .kv-table tr:last-child td { border-bottom: none; }
+    .kv-table tr:nth-child(even) td { background: var(--accent-light); }
+
+    /* ── Tags/pills ── */
+    .tag {
+      display: inline-block;
+      background: var(--accent-light);
+      border: 1px solid var(--accent);
+      color: var(--accent-dark);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 20px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      margin: 2px 2px 2px 0;
+    }
+
+    /* ── Callout box ── */
+    .callout {
+      background: var(--accent-light);
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 14px 0;
+      font-size: 14px;
+    }
+    .callout strong { color: var(--accent-dark); }
+
+    /* ── Contact grid ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .contact-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 12px 14px;
+    }
+    .contact-card .name { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+    .contact-card .responsibilities { font-size: 13px; color: var(--muted); }
+
+    /* ── Pricing table ── */
+    .price-row { display: flex; justify-content: space-between; align-items: baseline; padding: 8px 0; border-bottom: 1px solid var(--border); }
+    .price-row:last-child { border-bottom: none; }
+    .price-row .item { font-size: 14px; }
+    .price-row .prices { display: flex; gap: 16px; font-size: 13px; }
+    .price-row .list-price { color: var(--muted); text-decoration: line-through; }
+    .price-row .target { color: var(--accent-dark); font-weight: 600; }
+    .price-row .floor { color: #888; }
+
+    /* ── Inline link style ── */
+    a.doc-link {
+      color: var(--accent-dark);
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 1px;
+    }
+    a.doc-link:hover { color: var(--accent); }
+
+    /* ── Holiday table note ── */
+    .holiday-note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 10px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <span class="badge">Haven</span>
+  <span class="sep">/</span>
+  <a href="#role-overview">Role Overview</a>
+  <span class="sep">/</span>
+  <a href="#sales-cycle">Sales Cycle</a>
+  <span class="sep">/</span>
+  <a href="#outbound">Outbound</a>
+  <span class="sep">/</span>
+  <a href="#call-training">Call Training</a>
+  <span class="sep">/</span>
+  <a href="#rebuttals">Rebuttals</a>
+  <span class="sep">/</span>
+  <a href="#pricing">Pricing</a>
+  <span class="sep">/</span>
+  <a href="#email-templates">Email Templates</a>
+  <span class="sep">/</span>
+  <a href="#team-contacts">Team Contacts</a>
+  <span class="sep">/</span>
+  <a href="#holidays">Holidays</a>
+</nav>
+
+<header class="hero">
+  <div class="hero-label">New Hire Resource</div>
+  <h1>Outbound SDR Onboarding</h1>
+  <p>Your complete reference for role expectations, the sales cycle, outbound process, scripts, rebuttals, pricing, and team contacts. Everything clicks after about two weeks — use this guide until it does.</p>
+</header>
+
+<main>
+
+  <!-- ══════════════════════════════════ ROLE OVERVIEW ══════════════════════════════════ -->
+  <div id="role-overview" class="section-header">
+    <div class="section-icon">①</div>
+    <h2>Role Overview &amp; Team Structure</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title-group">
+        <div class="card-title">Welcome &amp; What to Expect</div>
+        <div class="card-subtitle">Role context, team structure, and work hours</div>
+      </div>
+      <span class="card-toggle">View details</span>
+    </div>
+    <div class="card-body">
+      <p>Welcome to the Outbound SDR team! This role is fast-paced, highly organized, and very niche compared to traditional sales roles. Most new hires report that everything clicks after about <strong>two weeks</strong> of hands-on experience.</p>
+
+      <h3>Team Structure</h3>
+      <ul>
+        <li>You are part of the Outbound SDR team (7 reps).</li>
+        <li>You will be paired with an <strong>Inbound SDR</strong> ("your inbounder") — each inbounder supports two outbound reps.</li>
+        <li>Your inbounder is <strong>Casey</strong> (Senior SDR, former Yelp).</li>
+        <li>You'll also work closely with <strong>Kaden</strong> (Senior SDR) and <strong>Aaron</strong> (Customer Success, still closely involved).</li>
+      </ul>
+
+      <h3>Work Hours</h3>
+      <ul>
+        <li>Training initially follows EST-aligned hours.</li>
+        <li>After training, hours can be adjusted — consistency matters more than exact timing.</li>
+        <li>Once hours are set, week-to-week consistency is expected.</li>
+      </ul>
+
+      <h3>What We Sell</h3>
+      <ul>
+        <li>Advertising placements in Haven real estate magazines.</li>
+        <li>Each market produces <strong>8 issues per year</strong>.</li>
+        <li>Each issue runs on a <strong>6-week cycle</strong>, called one "edition."</li>
+        <li>At all times you are working <strong>two editions simultaneously</strong>: opening a new one and closing a previous one.</li>
+      </ul>
+
+      <h3>Markets &amp; Edition Naming</h3>
+      <p>You will manage <strong>six markets</strong>. Every Monday, one market starts a new edition. Editions are named by their start date (Monday):</p>
+      <div class="callout">
+        <strong>Examples:</strong> TB-011926 → Tampa edition starting Jan 19 &nbsp;|&nbsp; NC-122225 → North Carolina edition starting Dec 22<br>
+        ❌ NOT the print date &nbsp; ❌ NOT the mail date &nbsp; ✅ The start of the sales cycle
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════ SALES CYCLE ══════════════════════════════════ -->
+  <div id="sales-cycle" class="section-header" style="margin-top:52px">
+    <div class="section-icon">②</div>
+    <h2>Sales Cycle &amp; Weekly Workflow</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title-group">
+        <div class="card-title">Monday Workflow &amp; Send Cadence</div>
+        <div class="card-subtitle">What happens each week across a 6-week slate</div>
+      </div>
+      <span class="card-toggle">View details</span>
+    </div>
+    <div class="card-body">
+      <h3>Every Monday You Will:</h3>
+      <ol>
+        <li>Start a new market edition — mail merge emails go to agents with active listings.</li>
+        <li>Continue closing the prior edition: secure commitments, collect ad materials, get approvals, push deals to "Approved" status.</li>
+        <li>Expect high inbound volume on Mondays.</li>
+      </ol>
+
+      <h3>Weekly Send Cadence (across a 6-week slate)</h3>
+      <table class="kv-table">
+        <thead><tr><th>Week</th><th>What Happens</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Week 1</strong></td><td>Mon: First email to active listings. Wed: RE follow-up (usually includes a better offer). Agents who respond are removed from future sends.</td></tr>
+          <tr><td><strong>Week 2</strong></td><td>Quiet week for this slate — no sends.</td></tr>
+          <tr><td><strong>Week 3</strong></td><td>Tue: First email to new listings (came on market after Week 1). Thu: RE to new listings. Also: Contracts & Subscriptions (ASU) sent to agents already under contract.</td></tr>
+          <tr><td><strong>Week 4</strong></td><td>Third RE — very short, deadline-driven ("checking in before we close the issue").</td></tr>
+          <tr><td><strong>After print</strong></td><td>Past Issue Advertisers (PI) email sent once magazines are physically delivered. Focus: "Did you receive your copies?" + renewal.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Inbox Folder System</h3>
+      <table class="kv-table">
+        <thead><tr><th>Folder</th><th>Meaning &amp; Your Action</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Interested</strong></td><td>Agent engaged, asked a question, but hasn't committed. <em>You are the closer here.</em> Call + text within 5 days. Move to a Salesforce deal.</td></tr>
+          <tr><td><strong>In (Deal Created)</strong></td><td>Agent agreed to advertise. Collect materials, track design → approval → print.</td></tr>
+          <tr><td><strong>Not Interested</strong></td><td>Declined. No further outreach unless something meaningful changes.</td></tr>
+          <tr><td><strong>Follow Up</strong></td><td>Not yet decided. Revisit at the agreed-upon time.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <strong>Key Philosophy:</strong> Not all leads go into Salesforce immediately. Until a lead is ready for a call or explicitly interested, it lives in Gmail — not the CRM. Go straight to the <strong>Interested folder</strong> first; that's where active selling happens.
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════ OUTBOUND ══════════════════════════════════ -->
+  <div id="outbound" class="section-header" style="margin-top:52px">
+    <div class="section-icon">③</div>
+    <h2>Outbound Process &amp; Expectations</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title-group">
+        <div class="card-title">Primary Outbound Lists</div>
+        <div class="card-subtitle">What to work first, every day</div>
+      </div>
+      <span class="card-toggle">View details</span>
+    </div>
+    <div class="card-body">
+      <p>Outbound is <strong>not cold calling</strong> — it is relationship-based prospecting built on prior engagement, data, and timing. It represents at least <strong>50% of your role</strong>.</p>
+
+      <h3>A. Daily Salesforce New Listings List — Highest Priority</h3>
+      <ul>
+        <li>Updates every morning; includes past advertisers with new listings, filtered by market and listing date.</li>
+        <li>Listings over <strong>$1M must be 100% reviewed</strong>. Work down to $750K then $500K as time allows.</li>
+        <li>"Worked" means contacted — or reviewed and staged appropriately.</li>
+        <li>Not every lead will be contacted, but every lead must have eyes on it.</li>
+        <li>Leadership monitors via last stage-change date and coverage percentage by month.</li>
+      </ul>
+
+      <h3>B. PALI List (Past Advertiser Last Issue) — Weekly</h3>
+      <ul>
+        <li>Delivered once per week; includes advertisers from the most recent issue (excludes anyone in a current deal).</li>
+        <li>High conversion rate — work within the first few days of receiving it.</li>
+        <li>Ideal for reruns, quick renewals, and subscription conversations.</li>
+      </ul>
+
+      <h3>C. Secondary Sources</h3>
+      <ul>
+        <li>Old "Interested" folders and prior unresponsive conversations.</li>
+        <li>Agents who said "not this issue" but now have a new listing.</li>
+        <li>Best practice: maintain a personal system (folder, tag, or doc) for warm prospects.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title-group">
+        <div class="card-title">Lead Stage Management</div>
+        <div class="card-subtitle">Core rule: if you look at a lead, you must update its stage</div>
+      </div>
+      <span class="card-toggle">View details</span>
+    </div>
+    <div class="card-body">
+      <p>Stage changes are the primary way leadership tracks list coverage, activity, and performance.</p>
+
+      <table class="kv-table">
+        <thead><tr><th>Stage</th><th>When to Use</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Reviewed &amp; Skipped</strong></td><td>Agent contacted recently, timing not right, or recently declined. Confirms the lead was intentionally reviewed, not ignored.</td></tr>
+          <tr><td><strong>Not Interested / Misc</strong></td><td>Lead has been worked, no response or clear decline, no new angle. Once here, do not continue outreach without new context.</td></tr>
+          <tr><td><strong>Interested</strong></td><td>You connected and the lead expressed interest.</td></tr>
+          <tr><td><strong>In</strong></td><td>Has a deal in the current issue.</td></tr>
+          <tr><td><strong>Needs a Follow Up</strong></td><td>No response to initial outreach, or a top agent you're targeting for premium placement.</td></tr>
+          <tr><td><strong>DNC</strong></td><td>Do Not Contact. If you must review, temporarily move it, then return it to DNC to update timestamps.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title-group">
+        <div class="card-title">Daily Expectations &amp; Outbound Sprints</div>
+        <div class="card-subtitle">Call minimums, sprint structure, and follow-up timing</div>
+      </div>
+      <span class="card-toggle">View details</span>
+    </div>
+    <div class="card-body">
+      <h3>Daily Call Minimums</h3>
+      <ul>
+        <li><strong>Minimum:</strong> 30 calls/day</li>
+        <li><strong>Target:</strong> 50 calls/day</li>
+        <li><strong>Half day:</strong> Hit 15 minimum before logging off</li>
+      </ul>
+
+      <h3>Outbound Sprints</h3>
+      <ul>
+        <li>Two scheduled sprints per day (rotating AM/PM).</li>
+        <li>One sprint per day is all-hands expected; second is encouraged but flexible.</li>
+        <li>A proper sprint includes: working lists top to bottom, calls and texts, real-time stage updates, clearing or reclassifying leads.</li>
+        <li>Outbound time is for <em>execution and movement</em>, not admin or over-customization.</li>
+      </ul>
+
+      <h3>Outreach Channel Standards</h3>
+      <ul>
+        <li><strong>Calls:</strong> Mandatory first step of every outreach. Voicemails are optional, not required.</li>
+        <li><strong>Texting:</strong> Approved primary follow-up channel. Keep texts short, relevant to the listing, and clear on next steps.</li>
+        <li>The goal is efficient contact, not maximum touchpoints.</li>
+      </ul>
+
+      <h3>Follow-Up Timing</h3>
+      <p>Must be context-driven, not arbitrary. Base timing on what the agent said, the listing lifecycle, and prior conversations. Example: "next month" → follow up closer to that time; "no for this issue" → try to understand why.</p>
+
+      <h3>Outbound Cadences by List Type</h3>
+      <table class="kv-table">
+        <thead><tr><th>List Type</th><th>Cadence</th></tr></thead>
+        <tbody>
+          <tr><td>PALI – Unresponsive</td><td>Work 100% of list. Day 1: 1 call, 1 text.</td></tr>
+          <tr><td>New Listings (Alex List)</td><td>Work 100% over $1M, 75%+ of full list. Day 1: call + text, stage to "needs follow up" if no answer. Day 2: 1 text follow up (email optional).</td></tr>
+          <tr><td>Past Interested &amp; Drops</td><td>Day 1: 1 call + 1 in-thread email. Day 2: 1 text. Day 3 (optional): 1 call + email.</td></tr>
+          <tr><td>Cover Outreach</td><td>Day 1: call + text. Day 2: call + email. Day 3 (required): call + text follow up.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Cover Price Minimums</h3>
+      <div class="callout">
+        Front cover: <strong>$1,195</strong> &nbsp;|&nbsp; Back cover only: <strong>$595</strong> &nbsp;|&nbsp; IFC: <strong>$995</strong><br>
+        If you plan to offer or rebuttal below these minimums, you <strong>must get HT approval first</strong>.
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════ CALL TRAINING ══════════════════════════════════ -->
+  <div id="call-training" class="section-header" style="margin-top:52px">
+    <div class="section-icon">④</div>
+    <h2>Call Training &amp; Scripts</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title-group">
+        <div class="card-title">Mindset, Tone &amp; Value Propositions</div>
+        <div class="card-subtitle">Core philosophy before you pick up the phone</div>
+      </div>
+      <span class="card-toggle">View details</span>
+    </div>
+    <div class="card-body">
+      <h3>Core Philosophy</h3>
+      <ul>
+        <li>The goal is a smooth "yes," not a combative win.</li>
+        <li>Realtors often push back — do not escalate.</li>
+        <li>The sale should generally be simple and easy.</li>
+        <li>Focus on making it easy for them to say yes.</li>
+      </ul>
+
+      <h3>Tone Guidelines</h3>
+      <ul>
+        <li>Acknowledge objections. De-escalate, do not challenge.</li>
+        <li>Never speak poorly about other marketing methods.</li>
+        <li>Assume interest rather than asking if they're interested.</li>
+        <li>Avoid passive-aggressive humor.</li>
+      </ul>
+
+      <h3>Two Primary Value Propositions</h3>
+      <ul>
+        <li><strong>Exposure:</strong> Print + Digital reach of 15,000 readers per issue.</li>
+        <li><strong>Tangible Tool:</strong> Listing presentations, client gifting, office display, brand reinforcement.</li>
+      </ul>
+      <div class="callout">When agents say "everyone already knows me" or "I only get word of mouth" or "I don't need exposure" — <strong>pivot from exposure to tool and branding value</strong>.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title-group">
+        <div class="card-title">Approved Verbatim Scripts</div>
+        <div class="card-subtitle">Use these exact words in the scenarios listed</div>
+      </div>
+      <span class="card-toggle">View scripts</span>
+    </div>
+    <div class="card-body">
+      <h3>"I'm Busy"</h3>
+      <div class="script-block">"No problem. If you're ready to move forward, we can just pull those images from online and get started. Does that work for you?"</div>
+      <p>Purpose: Remove their excuse by making the process effortless.</p>
+
+      <h3>"Send Me an Email"</h3>
+      <div class="script-block">"Absolutely. I will send you an email really quick. We're reaching 15,000 readers through both print and digital. We're also going to send you several hard copies. If you want to go ahead and move forward, I can make this easy and pull the images from online. Does that work for you?"</div>
+      <p>Keep it concise — do not pitch for 5 minutes.</p>
+
+      <h3>Closing / Follow-Up "By-When"</h3>
+      <div class="script-block">"Not a problem. Do you think you're going to have an answer by the end of this week? Would it be okay if I circle back tomorrow?"</div>
+      <p>Goal: Never leave timing open-ended.</p>
+
+      <h3>Interested Folder Follow-Up</h3>
+      <div class="script-block">"Hi, how are you? … Good, great. I wanted to follow up, see if you're ready to move forward with the page in the upcoming issue to feature your listing on [Address]. I'm happy to answer any questions you have. Otherwise, we would just need a few high-res images to get started."</div>
+
+      <h3>Distribution Response</h3>
+      <div class="script-block">"We're both print and digital with a heavy emphasis on digital. Print copies are going to residents based on property value and income. Digitally we're reaching 15,000 readers based on demographics as well as online behaviors through those sponsored social media and marketing campaigns."</div>
+
+      <h3>Hard Copy Quantity Expansion</h3>
+      <div class="script-block">"We're mailing 1,500 hard copies to agents participating in the magazine as well as relevant homes in the area based on property value and income. However, it is a very insignificant portion of our distribution, making up about 5% of our total circulation. We are reaching 15,000 readers online through those targeted social media and marketing campaigns. And with the hard copies as well, we'll be sure to send you five every issue. If you need a few more than that, we can accommodate."</div>
+
+      <h3>Cover Text Template (Day 1)</h3>
+      <div class="script-block">"[Name], the Front Cover for the upcoming issue of HAVEN became available! Would you be interested in running your new [Listing] on the cover if I could offer that at a nice discount?" <br><em>*Must mention the upcoming event (e.g. "Boat Show Edition")</em></div>
+
+      <h3>Cover Text Follow-Up (Day 3)</h3>
+      <div class="script-block">"Just following up, were you interested in featuring your listing on the Front Cover of the upcoming issue?"</div>
+
+      <h3>Cold vs. Warm Outbound Approach by Type</h3>
+      <table class="kv-table">
+        <thead><tr><th>Type</th><th>Approach</th></tr></thead>
+        <tbody>
+          <tr><td>Past Advertiser</td><td>Direct, assumptive close</td></tr>
+          <tr><td>Recently Worked</td><td>Reference last rate</td></tr>
+          <tr><td>Long Gap (2+ years)</td><td>Respectful re-intro</td></tr>
+          <tr><td>Top Agent, Never Worked</td><td>Short, premium-focused</td></tr>
+          <tr><td>Single Page Cold Call</td><td>Softer, confirm email first</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════ REBUTTALS ══════════════════════════════════ -->
+  <div id="rebuttals" class="section-header" style="margin-top:52px">
+    <div class="section-icon">⑤</div>
+    <h2>Rebuttals &amp; Common Objections</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title-group">
+        <div class="card-title">Handling Common Objections</div>
+        <div class="card-subtitle">What to say when agents push back</div>
+      </div>
+      <span class="card-toggle">View rebuttals</span>
+    </div>
+    <div class="card-body">
+
+      <h3>"It's Too Expensive / I Don't Have the Budget"</h3>
+      <ul>
+        <li>Break down the cost per reader (a few cents per reader).</li>
+        <li>Recap the value points.</li>
+        <li>Suggest splitting cost across multiple listings, and highlight branding value.</li>
+        <li>Frame as an investment with ROI potential, not money down the drain.</li>
+        <li>Offer delayed billing.</li>
+      </ul>
+
+      <h3>"I Don't Do Print Anymore"</h3>
+      <ul>
+        <li>Explain the online exposure: 15k+ readers online per issue, social media posts, landing page, editorial article.</li>
+        <li>Acknowledge the main value can be online, while still explaining print benefits (client gift, listing presentations, price reduction leverage).</li>
+        <li>If still adamant: offer 100% online for $150, which includes the full online package.</li>
+      </ul>
+
+      <h3>"Listing Should Be Going Under Contract Soon"</h3>
+      <ul>
+        <li>Agents feature sold/under contract listings all the time to attract new listings.</li>
+        <li>Great way to appeal to potential sellers and show recent success.</li>
+        <li>Still gets branding value and can serve future listing presentations.</li>
+        <li>Backup in case the sale doesn't go through.</li>
+      </ul>
+
+      <h3>"I've Never Heard of Haven"</h3>
+      <ul>
+        <li>Start by explaining you consistently work with top brokerages and agents in their market.</li>
+        <li>Name a few agents at their brokerage once you know them.</li>
+        <li>Walk through the value proposition.</li>
+        <li>"This is why we can offer an introductory rate."</li>
+      </ul>
+
+      <h3>"The Season Is Slow"</h3>
+      <ul>
+        <li>15,000 readers either way, regardless of season.</li>
+        <li>Lean on any theme or event tied to the issue.</li>
+        <li>Point out where the season will be when the issue actually comes out — often agents don't account for the timing lag.</li>
+        <li>Limited investment during slow season keeps you in front of readers while costs are low.</li>
+      </ul>
+
+      <h3>"I Don't Have Time"</h3>
+      <ul>
+        <li>We handle all of the design — virtually no work for them.</li>
+        <li>If pushback: we can pull photos from the MLS/online, so they don't need to send anything.</li>
+      </ul>
+
+      <h3>"Last Time I Didn't Get Any Leads"</h3>
+      <ul>
+        <li>Put things in perspective: how many times did they advertise? Was it once or twice, during the slower season?</li>
+        <li>Was their client happy? Did it help on listing presentations?</li>
+        <li>We can't track people who see the listing and then go to the agent's site directly.</li>
+        <li>Ask what they're seeing elsewhere for comparison.</li>
+      </ul>
+
+      <h3>"I Have a New Listing Coming On I'd Rather Feature"</h3>
+      <ul>
+        <li>Offer a 2-issue deal: feature current listing this time, new listing next month.</li>
+        <li>Potentially offer BOGO — next issue free once the new listing comes on.</li>
+      </ul>
+
+      <h3>"Not at This Time / Maybe in the Future"</h3>
+      <ul>
+        <li>Offer to follow up closer to the deadline (6–4 weeks out from print date).</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════ PRICING ══════════════════════════════════ -->
+  <div id="pricing" class="section-header" style="margin-top:52px">
+    <div class="section-icon">⑥</div>
+    <h2>Pricing Guide</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title-group">
+        <div class="card-title">Ad Placement Pricing</div>
+        <div class="card-subtitle">Pricing is flexible based on market, seasonality, and advertiser history</div>
+      </div>
+      <span class="card-toggle">View pricing</span>
+    </div>
+    <div class="card-body">
+      <div class="callout">
+        <strong>Note:</strong> Pricing is primarily determined by market, seasonality, original/past offer, and other factors. For special cases, check with HT.
+      </div>
+
+      <div class="price-row">
+        <span class="item">Full Page <em style="color:var(--muted);font-size:12px">(usually $600)</em></span>
+        <span class="prices"><span class="target">Target: $350</span><span class="floor">Floor: $250</span></span>
+      </div>
+      <div class="price-row">
+        <span class="item">Two-Page Spread <em style="color:var(--muted);font-size:12px">(usually $1,000)</em></span>
+        <span class="prices"><span class="target">Target: $600</span><span class="floor">Floor: $350</span></span>
+      </div>
+      <div class="price-row">
+        <span class="item">Half Page <em style="color:var(--muted);font-size:12px">(usually $400)</em></span>
+        <span class="prices"><span class="target">Target: $225</span><span class="floor">Floor: $150</span></span>
+      </div>
+      <div class="price-row">
+        <span class="item">Front Cover + Spread <em style="color:var(--muted);font-size:12px">(usually $2,500)</em></span>
+        <span class="prices"><span class="target">Target: $1,500</span><span class="floor">Floor: $1,195</span></span>
+      </div>
+      <div class="price-row">
+        <span class="item">Back Cover Only <em style="color:var(--muted);font-size:12px">(usually $1,500)</em></span>
+        <span class="prices"><span class="target">Target: $795</span><span class="floor">Floor: $595</span></span>
+      </div>
+      <div class="price-row">
+        <span class="item">Back Cover + Full Page <em style="color:var(--muted);font-size:12px">(usually $2,000)</em></span>
+        <span class="prices"><span class="target">Target: $995</span><span class="floor">Floor: $795</span></span>
+      </div>
+      <div class="price-row">
+        <span class="item">Inside Front Cover Spread <em style="color:var(--muted);font-size:12px">(usually $2,000)</em></span>
+        <span class="prices"><span class="target">Target: $995</span><span class="floor">Floor: $795</span></span>
+      </div>
+      <div class="price-row">
+        <span class="item">Premium Placement — First 10 Pages</span>
+        <span class="prices"><span class="target">+$200</span></span>
+      </div>
+      <div class="price-row">
+        <span class="item">Premium Placement — First 20 Pages</span>
+        <span class="prices"><span class="target">+$100</span></span>
+      </div>
+      <div class="price-row">
+        <span class="item">Editorial Fee (written by Sophie)</span>
+        <span class="prices"><span class="target">$150</span></span>
+      </div>
+
+      <p style="margin-top:14px;font-size:13px;"><a class="doc-link" href="https://havenlifestyles.com/havendigital" target="_blank">Digital Only Offerings &amp; Pricing →</a></p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════ EMAIL TEMPLATES ══════════════════════════════════ -->
+  <div id="email-templates" class="section-header" style="margin-top:52px">
+    <div class="section-icon">⑦</div>
+    <h2>Email Templates</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title-group">
+        <div class="card-title">Common Email Situations</div>
+        <div class="card-subtitle">Ready-to-send templates for the most frequent scenarios</div>
+      </div>
+      <span class="card-toggle">View templates</span>
+    </div>
+    <div class="card-body">
+
+      <h3>Distribution Response</h3>
+      <div class="script-block">$%name%,<br><br>
+Here's the media kit which includes the distribution details: [Media Kit Link]<br><br>
+As a quick overview, you'd receive a page in the magazine which is mailed to readers based on property value and income. You'll also be promoted online where we see an additional 15,000 readers. We'll include you in an article reaching readers through sponsored social media campaigns targeting affluent readers currently looking for real estate.<br><br>
+Would you like me to hold the page space for you?<br><br>*Add to Rebump</div>
+
+      <h3>They're In — Need Ad Material</h3>
+      <div class="script-block">Sounds good, $%name%.<br><br>
+All we need are a few hi-res photos and we'll get to work on a layout for you to review.<br><br>
+Here's a link where you can upload those along with any text: $%link%<br><br>
+If you prefer, you're also welcome to email those over.<br><br>
+*Add to Rebump</div>
+
+      <h3>No Response After 3+ Follow-Ups (No Reason Given)</h3>
+      <div class="script-block">Hi $%name%,<br><br>
+I wanted to reach out since we are wrapping up the reservation process soon.<br><br>
+How about if I further discount this to $%price% for the full page (usually $600) as a one-time deal?<br><br>
+You'd be reaching 15,000 readers, which breaks down to about 2¢ per reader at that price. It'd be hard to beat that level of exposure for the price. Postcards, by comparison, are over 50¢ per recipient.</div>
+
+      <h3>What's the Deadline?</h3>
+      <div class="script-block">Hi $%name%,<br><br>
+Ideally we're aiming to have ad materials in ASAP so we can get started on the design process. All we would need are a few hi-res images of the listing to get started on a layout for your review.<br><br>
+Would you be able to send those this week?<br><br>
+*Add to Rebump</div>
+
+      <h3>"I Don't Do Print"</h3>
+      <div class="script-block">$%name%,<br><br>
+90% of our readers are actually reached online (10,000+ per issue). We take listings from the issue and format them into an editorial style, promoting them to readers based on demographics and recent online behavior, like looking for a home.<br><br>
+If you prefer to forgo the print, I could offer an article for $150.<br><br>
+Would that work better for you?</div>
+
+      <h3>Under Contract / Branding</h3>
+      <div class="script-block">Hi $%name%,<br><br>
+Congratulations!<br><br>
+For what it's worth, a lot of agents also feature under contract / sold listings for branding & self-marketing purposes to attract new listings and generate buyer interest for similar caliber properties. I have attached an example for your reference.<br><br>
+Does that have any potential for you?</div>
+
+      <h3>Front Cover Outreach (Day 2 Email)</h3>
+      <div class="script-block">Hi $%name%,<br><br>
+I just tried to give you a call. Following up on a text I sent over yesterday.<br><br>
+We had the Front Cover open up for the upcoming edition of Haven [Market] | Homes + Lifestyles, which goes live next month and runs through [Month].<br><br>
+Would you be interested in featuring $%address% on the Cover if I could offer the package at $1,500?<br><br>
+The front cover package includes: your listing on the front cover of the print and digital edition, a two-page spread towards the front of the magazine, distribution to 15k readers through print and digital, and 25 hard copies mailed to your preferred address.<br><br>
+Recent Issue: $%link%<br><br>
+*Must mention event or feeder market</div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════ TEAM CONTACTS ══════════════════════════════════ -->
+  <div id="team-contacts" class="section-header" style="margin-top:52px">
+    <div class="section-icon">⑧</div>
+    <h2>Team Contact Guide</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title-group">
+        <div class="card-title">Who to Contact for What</div>
+        <div class="card-subtitle">Tag the right person in Slack for faster resolution</div>
+      </div>
+      <span class="card-toggle">View contacts</span>
+    </div>
+    <div class="card-body">
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="name">@Aaron Sanchez</div>
+          <div class="responsibilities">Shipment tracking · Shipping list modifications · Accounting email correspondence · Invoice edits</div>
+        </div>
+        <div class="contact-card">
+          <div class="name">@Paul Barnes</div>
+          <div class="responsibilities">Ad material / deal follow-up · Property description editing · Design calls</div>
+        </div>
+        <div class="contact-card">
+          <div class="name">@Hammad Khan</div>
+          <div class="responsibilities">Article inclusion · Article edits · Article status updates</div>
+        </div>
+        <div class="contact-card">
+          <div class="name">@Yujia Zuo</div>
+          <div class="responsibilities">Data questions and needs · SFDC schedules</div>
+        </div>
+        <div class="contact-card">
+          <div class="name">@Satyendra</div>
+          <div class="responsibilities">Landing page posting and edits</div>
+        </div>
+        <div class="contact-card">
+          <div class="name">@Devin Snelling</div>
+          <div class="responsibilities">Salesforce + SalesLoft requests · Zendesk & Monday.com requests · Training &amp; IT/tech stack support</div>
+        </div>
+        <div class="contact-card">
+          <div class="name">@Jillian Zimmer</div>
+          <div class="responsibilities">Cover design requests · Complex design requests</div>
+        </div>
+        <div class="contact-card">
+          <div class="name">@clafollette</div>
+          <div class="responsibilities">Edits to digital editions · Status requests for magazines close to press deadlines</div>
+        </div>
+        <div class="contact-card">
+          <div class="name">@Sophie Cantine</div>
+          <div class="responsibilities">HOTD status questions · Special editorial requests</div>
+        </div>
+        <div class="contact-card">
+          <div class="name">@Laila Raza</div>
+          <div class="responsibilities">HOTD change requests · Social media post requests</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════ HOLIDAYS ══════════════════════════════════ -->
+  <div id="holidays" class="section-header" style="margin-top:52px">
+    <div class="section-icon">⑨</div>
+    <h2>Holiday Calendar</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title-group">
+        <div class="card-title">2025 &amp; 2026 Observed Holidays</div>
+        <div class="card-subtitle">Official Haven company holidays</div>
+      </div>
+      <span class="card-toggle">View calendar</span>
+    </div>
+    <div class="card-body">
+      <h3>2026</h3>
+      <table class="kv-table">
+        <thead><tr><th>Date</th><th>Holiday</th><th>Day</th></tr></thead>
+        <tbody>
+          <tr><td>1/1/2026</td><td>New Year's Day</td><td>Thursday</td></tr>
+          <tr><td>1/19/2026</td><td>Martin Luther King Day</td><td>Monday</td></tr>
+          <tr><td>2/16/2026</td><td>Presidents Day</td><td>Monday</td></tr>
+          <tr><td>5/25/2026</td><td>Memorial Day</td><td>Monday</td></tr>
+          <tr><td>6/19/2026</td><td>Juneteenth</td><td>Friday</td></tr>
+          <tr><td>7/3/2026</td><td>Independence Day (Observed)</td><td>Friday</td></tr>
+          <tr><td>9/7/2026</td><td>Labor Day</td><td>Monday</td></tr>
+          <tr><td>11/26/2026</td><td>Thanksgiving</td><td>Thursday</td></tr>
+          <tr><td>11/27/2026</td><td>Black Friday</td><td>Friday</td></tr>
+          <tr><td>12/24/2026</td><td>Christmas Eve</td><td>Thursday</td></tr>
+          <tr><td>12/25/2026</td><td>Christmas Day</td><td>Friday</td></tr>
+        </tbody>
+      </table>
+
+      <h3>2025</h3>
+      <table class="kv-table">
+        <thead><tr><th>Date</th><th>Holiday</th><th>Day</th></tr></thead>
+        <tbody>
+          <tr><td>1/1/2025</td><td>New Year's Day</td><td>Wednesday</td></tr>
+          <tr><td>1/20/2025</td><td>Martin Luther King Day</td><td>Monday</td></tr>
+          <tr><td>2/17/2025</td><td>Presidents Day</td><td>Monday</td></tr>
+          <tr><td>5/26/2025</td><td>Memorial Day</td><td>Monday</td></tr>
+          <tr><td>6/19/2025</td><td>Juneteenth</td><td>Thursday</td></tr>
+          <tr><td>7/4/2025</td><td>Independence Day</td><td>Friday</td></tr>
+          <tr><td>9/1/2025</td><td>Labor Day</td><td>Monday</td></tr>
+          <tr><td>11/27/2025</td><td>Thanksgiving</td><td>Thursday</td></tr>
+          <tr><td>11/28/2025</td><td>Black Friday</td><td>Friday</td></tr>
+          <tr><td>12/24/2025</td><td>Christmas Eve</td><td>Wednesday</td></tr>
+          <tr><td>12/25/2025</td><td>Christmas Day</td><td>Thursday</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  function toggle(header) {
+    const body = header.nextElementSibling;
+    const btn = header.querySelector('.card-toggle');
+    const isOpen = body.classList.toggle('open');
+    btn.textContent = isOpen ? 'Hide' : (btn.dataset.label || 'View details');
+    if (!btn.dataset.label) btn.dataset.label = btn.textContent === 'Hide' ? 'View details' : btn.textContent;
+  }
+
+  // Store original button labels
+  document.querySelectorAll('.card-toggle').forEach(btn => {
+    btn.dataset.label = btn.textContent;
+  });
+</script>
+
+</body>
+</html>
